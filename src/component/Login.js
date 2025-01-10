@@ -26,7 +26,7 @@ const Login = ({loginType}) => {
       <h4>Login to Your Account</h4>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email<span style={{color:"red"}}>*</span></label>
           <input
             type="email"
             id="email"
@@ -41,7 +41,7 @@ const Login = ({loginType}) => {
         </div>
        
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password<span style={{color:"red"}}>*</span></label>
           <input
             type="password"
             id="password"
