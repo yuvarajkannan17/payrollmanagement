@@ -6,7 +6,7 @@ function EmployeeLogin() {
   return (
     <div className="employee-login-container">
       <h2 className="employee-login-heading">Employee Login</h2>
-      <Login />
+      <Login loginType="Employee" />
     </div>
   );
 }

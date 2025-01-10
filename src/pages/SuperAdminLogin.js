@@ -6,7 +6,7 @@ function SuperAdminLogin() {
   return (
     <div className="employee-login-container">
       <h2 className="employee-login-heading">Super Admin Login</h2>
-      <Login />
+      <Login loginType="SuperAdmin" />
     </div>
   );
 }

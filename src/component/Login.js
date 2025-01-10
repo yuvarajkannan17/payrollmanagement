@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/Login.css';
 
-const Login = () => {
+const Login = ({loginType}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password });
+    console.log({ loginType ,email, password });
   };
 
   return (
