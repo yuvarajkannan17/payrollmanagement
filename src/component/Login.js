@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import '../styles/Login.css';
+import {useFormik} from "formik"
+import loginSchema from '../Schema/loginSchema';
+
+
 
 const Login = ({loginType}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {values,handleChange,handleBlur,errors,handleSubmit,touched}= useFormik({
+    initialValues:{
+        email:"",
+        password:""
+    },
+    validationSchema:loginSchema,
+    onSubmit:(values)=>{
+        
+        console.log(loginType)
+        console.log(values);
+    }
+   })
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ loginType ,email, password });
-  };
+  
 
   return (
     <div className="login-container">
@@ -19,23 +30,31 @@ const Login = ({loginType}) => {
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            name='email'
+            value={values.email}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            
             placeholder='Enter Email'
           />
+           {errors.email && touched.email && <small style={{color:"red"}}>{errors.email}</small>}
         </div>
+       
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            name='password'
+            value={values.password}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            
             placeholder='Enter Password'
           />
+           {errors.password && touched.password && <small style={{color:"red"}}>{errors.password}</small>}
         </div>
+       
         <button type="submit" className="submit-btn">
           Submit
         </button>
