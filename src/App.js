@@ -7,6 +7,7 @@ import About from './pages/About';
 import EmployeeLogin from './pages/EmployeeLogin';
 import HRLogin from './pages/HRLogin';
 import SuperAdminLogin from './pages/SuperAdminLogin';
+import HRDashboard from './pages/HRDashboard';
 
 
 function App() {
@@ -14,15 +15,20 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        
-        
+
+
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/employee-login" element={<EmployeeLogin />} />
-        <Route path="/hr-login" element={<HRLogin />} />
+
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
 
-      
+        <Route path='/hr'>
+          <Route path="login" element={<HRLogin />} />
+          <Route path='dashboard' element={<HRDashboard />} />
+        </Route>
+
+
       </Routes>
     </Router>
   );

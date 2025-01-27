@@ -1,12 +1,13 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "../styles/Header.css";
 
-
 const Header = () => {
+  const location = useLocation();
+  
   return (
-    <Navbar  style={{ backgroundColor: "#1C2FBA" }} variant="dark" expand="lg" className="header-navbar">
+    <Navbar style={{ backgroundColor: "#1C2FBA" }} variant="dark" expand="lg" className="header-navbar">
       <Container>
         <Navbar.Brand href="/">
           <img
@@ -19,19 +20,26 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <NavLink to="/" className="nav-link">
+            <NavLink to="/" className="nav-link" activeClassName="active">
               Home
             </NavLink>
-            <NavLink to="/about" className="nav-link">
+            <NavLink to="/about" className="nav-link" activeClassName="active">
               About
             </NavLink>
-            <NavLink to="/employee-login" className="nav-link">
+            <NavLink to="/employee-login" className="nav-link" activeClassName="active">
               Employee Login
             </NavLink>
-            <NavLink to="/hr-login" className="nav-link">
+            <NavLink 
+              to="/hr/login" 
+              className={`nav-link ${location.pathname.startsWith("/hr") ? "active" : ""}`}
+            >
               HR Login
             </NavLink>
-            <NavLink to="/superadmin-login" className="nav-link">
+            <NavLink 
+              to="/superadmin-login" 
+              className="nav-link" 
+              activeClassName="active"
+            >
               SuperAdmin Login
             </NavLink>
           </Nav>
