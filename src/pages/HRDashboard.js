@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const HRDashboard = () => {
   return (
@@ -19,31 +20,31 @@ const HRDashboard = () => {
           <nav className="w-100">
             <ul className="nav flex-column">
               <li className="nav-item mb-3">
-                <a
-                  href="#signup"
+                <Link
+                  to="/hr/employeesignup"
                   className="btn btn-dark w-100"
                   style={{ minWidth: "200px" }}
                 >
                   Employee Signup
-                </a>
+                </Link>
               </li>
               <li className="nav-item mb-3">
-                <a
-                  href="#administrative"
+                <Link
+                  to="#administrative"
                   className="btn btn-dark w-100"
                   style={{ minWidth: "200px" }}
                 >
                   Employee Administrative
-                </a>
+                </Link>
               </li>
               <li className="nav-item mb-3">
-                <a
-                  href="#salary"
+                <Link
+                  to="#salary"
                   className="btn btn-dark w-100"
                   style={{ minWidth: "200px" }}
                 >
                   Salary Administrative
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

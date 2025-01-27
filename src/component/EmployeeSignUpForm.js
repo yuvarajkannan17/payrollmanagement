@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import './EmployeeForm.css';  // Assuming your styles are here
+import '../styles/EmployeeSignUp.css';  // Assuming your styles are here
 
 const EmployeeSignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +30,8 @@ const EmployeeSignUpForm = () => {
   return (
     <Container className="form-container">
       <Row className="justify-content-center">
-        <Col md={8} lg={6} xs={12}>
+        <Col md={6} lg={4} xs={12}>
+          
           <h2 className="form-title">Employee Registration</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="employeeId">
@@ -40,7 +41,7 @@ const EmployeeSignUpForm = () => {
                 name="employeeId"
                 value={formData.employeeId}
                 onChange={handleChange}
-                required
+                placeholder='Employee Id'
               />
             </Form.Group>
 
@@ -51,7 +52,7 @@ const EmployeeSignUpForm = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                required
+                placeholder='Name'
               />
             </Form.Group>
 
@@ -62,7 +63,7 @@ const EmployeeSignUpForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                required
+                placeholder='Email'
               />
             </Form.Group>
 
@@ -73,7 +74,7 @@ const EmployeeSignUpForm = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                required
+                placeholder='Phone'
               />
             </Form.Group>
 
@@ -84,7 +85,7 @@ const EmployeeSignUpForm = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                required
+                placeholder='Password'
               />
             </Form.Group>
 
@@ -95,7 +96,7 @@ const EmployeeSignUpForm = () => {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                required
+                placeholder='Confirm Password'
               />
             </Form.Group>
 
