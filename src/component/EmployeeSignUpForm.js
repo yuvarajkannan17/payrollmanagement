@@ -1,32 +1,22 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import '../styles/EmployeeSignUp.css';  // Assuming your styles are here
-
+import { useFormik } from 'formik';
 const EmployeeSignUpForm = () => {
-  const [formData, setFormData] = useState({
-    employeeId: '',
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password === formData.confirmPassword) {
-      alert('Form submitted successfully!');
-      // Handle form submission logic here (e.g., send data to an API)
-    } else {
-      alert('Passwords do not match!');
+  
+  
+     const {values,handleBlur,handleChange,handleSubmit}= useFormik({
+    initialValues:{
+        employeeId: '',
+        name: '',
+        email: '',
+        phone: '',
+        password: '',
+        confirmPassword: '',
     }
-  };
+  })
 
+ 
   return (
     <Container className="form-container">
       <Row className="justify-content-center">
@@ -39,7 +29,8 @@ const EmployeeSignUpForm = () => {
               <Form.Control
                 type="text"
                 name="employeeId"
-                value={formData.employeeId}
+                onBlur={handleBlur}
+                value={values.employeeId}
                 onChange={handleChange}
                 placeholder='Employee Id'
               />
@@ -50,7 +41,8 @@ const EmployeeSignUpForm = () => {
               <Form.Control
                 type="text"
                 name="name"
-                value={formData.name}
+                value={values.name}
+                onBlur={handleBlur}
                 onChange={handleChange}
                 placeholder='Name'
               />
@@ -61,7 +53,8 @@ const EmployeeSignUpForm = () => {
               <Form.Control
                 type="email"
                 name="email"
-                value={formData.email}
+                value={values.email}
+                onBlur={handleBlur}
                 onChange={handleChange}
                 placeholder='Email'
               />
@@ -72,7 +65,8 @@ const EmployeeSignUpForm = () => {
               <Form.Control
                 type="tel"
                 name="phone"
-                value={formData.phone}
+                value={values.phone}
+                onBlur={handleBlur}
                 onChange={handleChange}
                 placeholder='Phone'
               />
@@ -83,8 +77,9 @@ const EmployeeSignUpForm = () => {
               <Form.Control
                 type="password"
                 name="password"
-                value={formData.password}
+                value={values.password}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder='Password'
               />
             </Form.Group>
@@ -94,8 +89,9 @@ const EmployeeSignUpForm = () => {
               <Form.Control
                 type="password"
                 name="confirmPassword"
-                value={formData.confirmPassword}
+                value={values.confirmPassword}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder='Confirm Password'
               />
             </Form.Group>
