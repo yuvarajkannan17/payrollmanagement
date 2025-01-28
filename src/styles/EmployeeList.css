@@ -1,0 +1,66 @@
+/* Set the background color of the overall container */
+.employee-list-container {
+    background-color: rgb(245, 255, 215); /* Light yellow background */
+    padding: 20px;
+    min-height: 100vh; /* Ensure the container takes full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Adjust to ensure the table stays closer to the title */
+}
+
+/* Title styling */
+.employee-list-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Reduce space between the heading and the table */
+}
+
+/* Style for table header */
+.employee-list-header {
+    background-color: #1C2FBA; /* Blue background */
+    color: white; /* White text color */
+}
+
+/* Style for the table */
+.employee-list-table {
+    table-layout: auto;
+    background-color: white; /* Set white background for table */
+    width: 100%; /* Ensure table width is full */
+    margin-bottom: 20px; /* Space between table and button */
+}
+.employee-list-table :hover{
+    cursor: pointer;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .employee-list-table th, .employee-list-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .employee-list-table th, .employee-list-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* Style for backward button */
+.back-btn {
+    background-color: #363635; /* Sandal background color */
+    color: white;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    width: auto; /* Button will only take the width of the content */
+    display: inline-block; /* Make sure the button is inline with its content */
+    text-align: center;
+    margin-top: 20px; /* Space the button from the table */
+}
+
+.back-btn:hover {
+    background-color: #5f5e5b; /* Darker sandal color on hover */
+}
