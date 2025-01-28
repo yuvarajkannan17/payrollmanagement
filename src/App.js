@@ -9,8 +9,12 @@ import HRLogin from './pages/HRLogin';
 import SuperAdminLogin from './pages/SuperAdminLogin';
 import HRDashboard from './pages/HRDashboard';
 import EmployeeSignUp from './pages/EmployeeSignUp';
+<<<<<<< HEAD
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import MyAccount from './pages/MyAccount';
+=======
+import EmployeeList from './pages/EmployeeList';
+>>>>>>> 7a70902086ea17fd34ea2ff8f1f02a4e3fb89842
 
 
 function App() {
@@ -29,6 +33,7 @@ function App() {
           <Route path="login" element={<HRLogin />} />
           <Route path='dashboard' element={<HRDashboard />} />
           <Route path='employeesignup' element={<EmployeeSignUp/>}/>
+          <Route path='employeereport' element={<EmployeeList/>}/>
         </Route>
        
         <Route path='/employee'>

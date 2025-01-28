@@ -1,0 +1,125 @@
+.signup-container {
+  max-width: 400px; /* Restrict width for readability */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Makes it responsive on smaller screens */
+}
+
+.signup-form .form-group {
+  margin-bottom: 15px;
+}
+
+.signup-form input {
+  width: 100%; /* Full width on all devices */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 40px; /* Leave space for the toggle icon */
+}
+
+.password-input-container span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%; /* Full width for all devices */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 15px;
+  }
+
+  .signup-form label {
+    font-size: 0.9rem;
+  }
+
+  .signup-form input {
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h4 {
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.close-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.close-btn:hover {
+  background-color: #218838;
+}
