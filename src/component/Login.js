@@ -19,6 +19,9 @@ const Login = ({ loginType }) => {
       if(loginType==="HR"){
         navigate("/hr/dashboard")
       }
+      else if(loginType==="Employee"){
+        navigate("/employee/dashboard")
+      } 
       console.log(loginType);
       console.log(values);
     }

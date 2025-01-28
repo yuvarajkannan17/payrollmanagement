@@ -26,7 +26,7 @@ const Header = () => {
             <NavLink to="/about" className="nav-link" activeClassName="active">
               About
             </NavLink>
-            <NavLink to="/employee-login" className="nav-link" activeClassName="active">
+            <NavLink to="/employee/login"  className={`nav-link ${location.pathname.startsWith("/employee") ? "active" : ""}`}>
               Employee Login
             </NavLink>
             <NavLink 
