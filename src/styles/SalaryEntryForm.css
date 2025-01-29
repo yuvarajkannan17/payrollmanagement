@@ -66,6 +66,8 @@
     font-size: 12px;
 }
 
+
+
 /* Responsiveness: Adjust fields on smaller screens */
 @media (max-width: 768px) {
     .salary-entry-form-container {

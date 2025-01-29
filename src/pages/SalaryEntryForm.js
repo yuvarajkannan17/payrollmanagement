@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import '../styles/SalaryEntryForm.css';
+import { useNavigate } from 'react-router-dom';
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -22,6 +23,7 @@ const validationSchema = Yup.object({
 });
 
 const SalaryEntryForm = () => {
+   const navigate= useNavigate();
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -56,6 +58,7 @@ const SalaryEntryForm = () => {
 
     return (
         <div className="salary-entry-form-wrapper">
+            
             <div className="salary-entry-form-container">
                 <h2 className="salary-entry-form-title">Salary Entry Form</h2>
 
@@ -97,7 +100,7 @@ const SalaryEntryForm = () => {
                         <div className="salary-entry-form-group">
                             <label>Total Working Days</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="totalWorkingDays"
                                 placeholder='Total Working Days'
                                 value={formik.values.totalWorkingDays}
