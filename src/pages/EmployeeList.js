@@ -27,33 +27,39 @@ const EmployeeList = () => {
     };
 
     return (
-        <div className="employee-list-container">
-            <h2 className="employee-list-title">Employee List</h2>
-            <table className="table table-striped table-bordered table-hover employee-list-table">
-                <thead className="employee-list-header" >
-                    <tr>
-                        <th>Employee ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>City</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {employees.map((employee) => (
-                        <tr key={employee.id}>
-                            <td>{employee.employeeId}</td>
-                            <td>{employee.name}</td>
-                            <td>{employee.email}</td>
-                            <td>{employee.phone}</td>
-                            <td>{employee.city}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="employee-list-wrapper">
+            <div className="container employee-list-container">
+                <h2 className="employee-list-title">Employee List</h2>
 
-            {/* Backward Button */}
-            <button className="btn back-btn" onClick={handleGoBack}>Back</button>
+                {/* Responsive Table Wrapper */}
+                <div className="table-responsive">
+                    <table className="table table-striped table-bordered table-hover employee-list-table">
+                        <thead className='employee-list-header'>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>City</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {employees.map((employee) => (
+                                <tr key={employee.id}>
+                                    <td>{employee.employeeId}</td>
+                                    <td>{employee.name}</td>
+                                    <td>{employee.email}</td>
+                                    <td>{employee.phone}</td>
+                                    <td>{employee.city}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Backward Button */}
+                <button className="btn back-btn" onClick={handleGoBack}>Back</button>
+            </div>
         </div>
     );
 };

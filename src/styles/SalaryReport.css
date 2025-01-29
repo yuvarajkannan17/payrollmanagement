@@ -1,0 +1,84 @@
+/* Page Background (Sandal Color) */
+.salary-report-wrapper {
+    background-color: rgb(245, 255, 215); /* Sandal color */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* White container box */
+.salaryreport-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto; /* Ensures it stays at the top with some spacing */
+}
+
+/* Header Section */
+.salaryreport-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Table Header */
+.salaryreport-table thead th {
+    background-color: #1C2FBA !important;
+    color: white !important;
+}
+
+/* Add Salary Button */
+.add-salary-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.add-salary-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Table */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* Back Button Styling */
+.back-btn {
+    background-color: #3e3f40;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background-color: #808181;
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 768px) {
+    .salaryreport-table th, .salaryreport-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .salaryreport-table th, .salaryreport-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}

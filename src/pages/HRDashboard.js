@@ -39,7 +39,7 @@ const HRDashboard = () => {
               </li>
               <li className="nav-item mb-3">
                 <Link
-                  to="#salary"
+                  to="/hr/salaryreport"
                   className="btn btn-dark w-100"
                   style={{ minWidth: "200px" }}
                 >
