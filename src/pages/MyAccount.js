@@ -2,8 +2,12 @@ import React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import '../styles/MyAccount.css';
 
 const MyAccount = () => {
+  const handleBack = () => {
+    window.history.back(); // Go to the previous page in the history
+  };
   const validationSchema = Yup.object({
     // Personal Information validation
     fullName: Yup.string().required("Full Name is required"),
@@ -464,6 +468,9 @@ const MyAccount = () => {
             <Button variant="primary" type="submit" className="submit-btn">
               Submit
             </Button>
+            <button className="btn btn-secondary back-btn" onClick={handleBack}>
+          Back
+        </button>
           </Form>
         </Col>
       </Row>
