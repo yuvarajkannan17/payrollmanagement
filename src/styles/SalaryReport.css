@@ -50,10 +50,10 @@
 }
 
 /* Action Buttons */
-.action-buttons {
+/* .action-buttons {
     display: flex;
     gap: 5px;
-}
+} */
 
 /* Back Button Styling */
 .back-btn {
@@ -67,6 +67,50 @@
 .back-btn:hover {
     background-color: #808181;
 }
+
+/* SalaryReport.css */
+/* SalaryReport.css */
+
+/* Icon Buttons */
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* Edit Icon */
+  .edit-icon {
+    color: #007bff; /* Blue color for edit */
+    font-size: 18px;
+  }
+  
+  /* Delete Icon */
+  .delete-icon {
+    color: #dc3545; /* Red color for delete */
+    font-size: 18px;
+  }
+  
+  /* Download Icon */
+  .download-icon {
+    color: #28a745; /* Green color for download */
+    font-size: 18px;
+  }
+  
+  /* Action Buttons Container */
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 /* Responsive Font Sizes */
 @media (max-width: 768px) {

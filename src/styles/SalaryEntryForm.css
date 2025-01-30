@@ -1,52 +1,47 @@
-.salary-entry-form-wrapper {
-    background-color: rgb(245, 255, 215); /* Sandal color */
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-}
 
-.salary-entry-form-container {
+  
+  /* Salary Entry Form Styles */
+  .salary-entry-form-wrapper {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px; /* Adjusted width for smaller form */
-}
-
-.salary-entry-form-title {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .salary-entry-form-title {
     text-align: center;
     font-size: 22px;
     margin-bottom: 20px;
-}
-
-.salary-entry-form-row {
+  }
+  
+  .salary-entry-form-row {
     display: flex;
     justify-content: space-between;
     gap: 15px;
     margin-bottom: 20px;
-}
-
-.salary-entry-form-group {
-    width: 48%; /* Each input will take up 48% width for two fields per row */
-}
-
-.salary-entry-form-group label {
+  }
+  
+  .salary-entry-form-group {
+    width: 48%;
+  }
+  
+  .salary-entry-form-group label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
-}
-
-.salary-entry-form-group input {
+  }
+  
+  .salary-entry-form-group input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.salary-entry-submit-btn {
+  }
+  
+  .salary-entry-submit-btn {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -55,39 +50,47 @@
     cursor: pointer;
     width: 100%;
     margin-top: 20px;
-}
-
-.salary-entry-submit-btn:hover {
+  }
+  
+  .salary-entry-submit-btn:hover {
     background-color: #0056b3;
-}
-
-.salary-entry-error {
+  }
+  
+  .salary-entry-error {
     color: red;
     font-size: 12px;
-}
-
-
-
-/* Responsiveness: Adjust fields on smaller screens */
-@media (max-width: 768px) {
-    .salary-entry-form-container {
-        padding: 15px;
-    }
-
-    .salary-entry-form-title {
-        font-size: 18px;
-    }
-
+  }
+  
+  /* Back Button Styles */
+  .back-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .back-button:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Wrapper Styles for NewEntryForm and EditEntryForm */
+  .new-entry-form-wrapper,
+  .edit-entry-form-wrapper {
+    background-color: rgb(245, 255, 215); /* Sandal color */
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
     .salary-entry-form-row {
-        flex-direction: column;
+      flex-direction: column;
     }
-
+  
     .salary-entry-form-group {
-        width: 100%; /* Stack fields vertically */
-        margin-bottom: 10px;
+      width: 100%;
     }
-
-    .salary-entry-submit-btn {
-        width: 100%;
-    }
-}
+  }

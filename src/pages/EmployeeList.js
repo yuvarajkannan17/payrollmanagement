@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/EmployeeList.css';  // Import the CSS file for styles
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeList = () => {
+   const navigate= useNavigate();
     const [employees, setEmployees] = useState([
         {
             "id": 1,
@@ -21,40 +23,73 @@ const EmployeeList = () => {
         }
     ]);
 
+    const [searchQuery, setSearchQuery] = useState(""); // State for search query
+
+    // Filter employees based on name or employee ID
+    const filteredEmployees = employees.filter((employee) => {
+        const lowerCaseQuery = searchQuery.toLowerCase();
+        return (
+            employee.name.toLowerCase().includes(lowerCaseQuery) ||
+            employee.employeeId.toLowerCase().includes(lowerCaseQuery)
+        );
+    });
+
     // Backward button function
     const handleGoBack = () => {
         window.history.back();
     };
+
+    
+    function goToMonthlyPayslip(){
+        navigate("/hr/monthlysalaryreport");
+    }
 
     return (
         <div className="employee-list-wrapper">
             <div className="container employee-list-container">
                 <h2 className="employee-list-title">Employee List</h2>
 
+                {/* Search Input */}
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder="Search by Name or Employee ID"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="search-input"
+                    />
+                </div>
+
                 {/* Responsive Table Wrapper */}
                 <div className="table-responsive">
-                    <table className="table table-striped table-bordered table-hover employee-list-table">
-                        <thead className='employee-list-header'>
-                            <tr>
-                                <th>Employee ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>City</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {employees.map((employee) => (
-                                <tr key={employee.id}>
-                                    <td>{employee.employeeId}</td>
-                                    <td>{employee.name}</td>
-                                    <td>{employee.email}</td>
-                                    <td>{employee.phone}</td>
-                                    <td>{employee.city}</td>
+                    {filteredEmployees.length > 0 ? (
+                        <table className="table table-striped table-bordered table-hover employee-list-table">
+                            <thead className='employee-list-header'>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>City</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {filteredEmployees.map((employee) => (
+                                    <tr key={employee.id} onClick={goToMonthlyPayslip}>
+                                        <td>{employee.employeeId}</td>
+                                        <td>{employee.name}</td>
+                                        <td>{employee.email}</td>
+                                        <td>{employee.phone}</td>
+                                        <td>{employee.city}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <div className="no-records-found">
+                            No records found.
+                        </div>
+                    )}
                 </div>
 
                 {/* Backward Button */}

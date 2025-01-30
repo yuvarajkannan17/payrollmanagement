@@ -1,0 +1,131 @@
+/* Monthly Payslip Wrapper */
+.monthly-payslip-wrapper {
+    background-color: rgb(245, 255, 215); /* Sandal background color */
+    min-height: 100vh; /* Full page height */
+    padding: 20px;
+}
+
+/* White container box */
+.monthly-payslip-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Title Section */
+.monthly-payslip-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Table Header */
+.monthly-payslip-table thead tr th {
+    background-color: #1C2FBA; /* Blue background */
+    color: white; /* White text */
+    text-align: center;
+}
+
+/* Table Styling */
+.monthly-payslip-table {
+    table-layout: auto;
+    background-color: white; /* Set white background for table */
+    width: 100%; /* Ensure table width is full */
+    margin-bottom: 20px;
+}
+
+.monthly-payslip-table td,
+.monthly-payslip-table th {
+    padding: 12px;
+    text-align: center;
+}
+
+/* Action Buttons Styling */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Icon Buttons */
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    opacity: 0.8;
+}
+
+/* Download Icon */
+.download-icon {
+    color: #28a745; /* Green color for download */
+    font-size: 18px;
+}
+
+/* No Records Found Message */
+.no-records-found {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Back Button Styling */
+.back-btn {
+    background-color: #363635; /* Sandal background color */
+    color: white;
+    font-size: 14px; /* Smaller font size */
+    padding: 6px 12px; /* Reduced padding */
+    border: none;
+    border-radius: 5px;
+    width: auto; /* Button will only take the width of the content */
+    margin-top: 20px; /* Space from the table */
+    display: inline-block;
+    text-align: center;
+}
+
+.back-btn:hover {
+    background-color: #5f5e5b; /* Darker sandal color on hover */
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 768px) {
+    .monthly-payslip-table th,
+    .monthly-payslip-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .back-btn {
+        font-size: 12px; /* Adjust button font size for smaller screens */
+        padding: 5px 10px; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .monthly-payslip-table th,
+    .monthly-payslip-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .back-btn {
+        font-size: 12px; /* Maintain smaller font size */
+        padding: 4px 8px; /* Further reduced padding */
+    }
+}

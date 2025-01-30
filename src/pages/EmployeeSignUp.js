@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import SignUpForm from "../component/SignUpForm";
-import "../styles/EmployeeSignUp.css";
+import "../styles/EmployeeSignup.css";
 
 function EmployeeSignUp() {
   const navigate = useNavigate(); // Initialize the navigate function

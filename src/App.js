@@ -9,19 +9,15 @@ import HRLogin from './pages/HRLogin';
 import SuperAdminLogin from './pages/SuperAdminLogin';
 import HRDashboard from './pages/HRDashboard';
 import EmployeeSignUp from './pages/EmployeeSignUp';
-<<<<<<< HEAD
-import EmployeeList from './pages/EmployeeList';
-import EmployeeDashboard from './pages/EmployeeDashboard';
-import MyAccount from './pages/MyAccount';
 import MySalary from './pages/MySalary';
-=======
-
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import MyAccount from './pages/MyAccount';
 import EmployeeList from './pages/EmployeeList';
 import SalaryReport from './pages/SalaryReport';
-import SalaryEntryForm from './pages/SalaryEntryForm';
->>>>>>> b4993ccf1a1e075ec574cb393f4ac340559bd6aa
+import NewSalaryEntry from './pages/NewSalaryEntry';
+import EditSalaryEntry from './pages/EditSalaryEntry';
+import MonthlyPayslip from './pages/MonthlyPayslip';
+
 
 
 function App() {
@@ -42,7 +38,9 @@ function App() {
           <Route path='employeesignup' element={<EmployeeSignUp/>}/>
           <Route path='employeereport' element={<EmployeeList/>}/>
           <Route path='salaryreport' element={<SalaryReport/>}/>
-          <Route path='salaryentryform' element={<SalaryEntryForm/>}/>
+          <Route path='newsalaryentry' element={<NewSalaryEntry/>}/>
+          <Route path='editsalaryentry' element={<EditSalaryEntry/>}/>
+          <Route path='monthlysalaryreport' element={<MonthlyPayslip/>}/>
           
         </Route>
        
