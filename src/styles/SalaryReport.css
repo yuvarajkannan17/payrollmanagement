@@ -50,10 +50,45 @@
 }
 
 /* Action Buttons */
-/* .action-buttons {
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    opacity: 0.8;
+}
+
+/* Edit Icon */
+.edit-icon {
+    color: #007bff; /* Blue color for edit */
+    font-size: 18px;
+}
+
+/* Delete Icon */
+.delete-icon {
+    color: #dc3545; /* Red color for delete */
+    font-size: 18px;
+}
+
+/* Download Icon */
+.download-icon {
+    color: #28a745; /* Green color for download */
+    font-size: 18px;
+}
+
+/* Action Buttons Container */
+.action-buttons {
     display: flex;
-    gap: 5px;
-} */
+    justify-content: center;
+    align-items: center;
+}
 
 /* Back Button Styling */
 .back-btn {
@@ -68,49 +103,26 @@
     background-color: #808181;
 }
 
-/* SalaryReport.css */
-/* SalaryReport.css */
+/* Search Container */
+.search-container {
+    margin-bottom: 20px;
+}
 
-/* Icon Buttons */
-.icon-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    margin: 0 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icon-btn:hover {
-    opacity: 0.8;
-  }
-  
-  /* Edit Icon */
-  .edit-icon {
-    color: #007bff; /* Blue color for edit */
+.search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* No Records Found Message */
+.no-records {
+    text-align: center;
     font-size: 18px;
-  }
-  
-  /* Delete Icon */
-  .delete-icon {
-    color: #dc3545; /* Red color for delete */
-    font-size: 18px;
-  }
-  
-  /* Download Icon */
-  .download-icon {
-    color: #28a745; /* Green color for download */
-    font-size: 18px;
-  }
-  
-  /* Action Buttons Container */
-  .action-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    color: #dc3545; /* Red color for emphasis */
+    padding: 20px;
+}
 
 /* Responsive Font Sizes */
 @media (max-width: 768px) {
@@ -118,11 +130,27 @@
         font-size: 14px;
         padding: 10px;
     }
+
+    .search-input {
+        font-size: 14px;
+    }
+
+    .no-records {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 576px) {
     .salaryreport-table th, .salaryreport-table td {
         font-size: 12px;
         padding: 8px;
+    }
+
+    .search-input {
+        font-size: 12px;
+    }
+
+    .no-records {
+        font-size: 14px;
     }
 }

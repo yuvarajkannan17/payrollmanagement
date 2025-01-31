@@ -16,7 +16,7 @@ import EmployeeList from './pages/EmployeeList';
 import SalaryReport from './pages/SalaryReport';
 import NewSalaryEntry from './pages/NewSalaryEntry';
 import EditSalaryEntry from './pages/EditSalaryEntry';
-import MonthlyPayslip from './pages/MonthlyPayslip';
+
 
 
 
@@ -40,7 +40,7 @@ function App() {
           <Route path='salaryreport' element={<SalaryReport/>}/>
           <Route path='newsalaryentry' element={<NewSalaryEntry/>}/>
           <Route path='editsalaryentry' element={<EditSalaryEntry/>}/>
-          <Route path='monthlysalaryreport' element={<MonthlyPayslip/>}/>
+          
           
         </Route>
        

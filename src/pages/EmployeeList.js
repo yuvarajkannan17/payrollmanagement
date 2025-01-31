@@ -40,9 +40,7 @@ const EmployeeList = () => {
     };
 
     
-    function goToMonthlyPayslip(){
-        navigate("/hr/monthlysalaryreport");
-    }
+   
 
     return (
         <div className="employee-list-wrapper">
@@ -75,7 +73,7 @@ const EmployeeList = () => {
                             </thead>
                             <tbody>
                                 {filteredEmployees.map((employee) => (
-                                    <tr key={employee.id} onClick={goToMonthlyPayslip}>
+                                    <tr key={employee.id} >
                                         <td>{employee.employeeId}</td>
                                         <td>{employee.name}</td>
                                         <td>{employee.email}</td>
