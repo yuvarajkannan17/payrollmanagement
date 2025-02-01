@@ -1,7 +1,6 @@
-/* Page Background */
-
-.myaccount-wrapper {
-    background-color: rgb(245, 255, 215) !important; /* Sandal color */
+/* Employee Onboard Container */
+.employee-onboard-container {
+    background-color: rgb(245, 255, 215); /* Sandal color */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -9,48 +8,67 @@
     padding: 20px;
 }
 
-
-/* White container box */
-.myaccount-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 900px; /* Adjusted width for form layout */
-}
-
-/* Page Title */
-.myaccount-title {
+/* Employee Onboard Title */
+.employee-onboard-title {
     text-align: center;
     font-size: 26px;
     margin-bottom: 30px;
     font-weight: bold;
+    color: #333;
 }
 
-/* Form Styling */
-.myaccount-form h4 {
+/* Employee Onboard Form */
+.employee-onboard-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Increased form width */
+    width: 100%;
+}
+
+/* Section Title */
+.employee-onboard-section-title {
     margin-top: 20px;
     font-size: 18px;
     color: #333;
 }
 
-.myaccount-form .form-group {
+/* Form Group */
+.employee-onboard-form-group {
     margin-bottom: 15px;
 }
 
-.myaccount-form .form-label {
+/* Form Label */
+.employee-onboard-form-group .form-label {
     font-weight: 500;
+    color: #555;
 }
 
-.myaccount-form .form-control {
+/* Form Input */
+.employee-onboard-input {
     border-radius: 5px;
     padding: 10px;
     font-size: 1rem;
+    border: 1px solid #ddd;
 }
 
-/* Submit and Back Button */
-.submit-btn, .back-btn {
+/* Required Field Indicator */
+.employee-onboard-required {
+    color: red;
+    margin-left: 5px;
+}
+
+/* Error Feedback */
+.employee-onboard-error {
+    font-size: 0.875rem;
+    color: #dc3545;
+}
+
+/* Submit Button */
+.employee-onboard-submit-btn {
+    background-color: #007bff;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -59,70 +77,52 @@
     width: 100%;
 }
 
-.submit-btn {
-    background-color: #007bff;
-    color: white;
-}
-
-.submit-btn:hover {
+.employee-onboard-submit-btn:hover {
     background-color: #0056b3;
 }
 
-.back-btn {
+/* Back Button */
+.employee-onboard-back-btn {
     background-color: #313232;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 12px;
+    padding: 10px 20px;
     cursor: pointer;
     font-size: 1rem;
     width: 100%;
     margin-top: 20px;
 }
 
-.back-btn:hover {
+.employee-onboard-back-btn:hover {
     background-color: #0f538b;
-}
-
-/* Invalid Feedback Styling */
-.form-control.is-invalid {
-    border-color: #dc3545;
-}
-
-.form-control.is-invalid:focus {
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
-
-.form-control-feedback {
-    font-size: 0.875rem;
-    color: #dc3545;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .myaccount-container {
+    .employee-onboard-container {
         padding: 20px;
     }
 
-    .myaccount-title {
+    .employee-onboard-title {
         font-size: 22px;
     }
 
-    .myaccount-form .form-control {
+    .employee-onboard-input {
         font-size: 0.95rem;
     }
 
-    .submit-btn, .back-btn {
+    .employee-onboard-submit-btn, .employee-onboard-back-btn {
         width: 100%;
     }
 }
 
 @media (max-width: 576px) {
-    .myaccount-form h4 {
+    .employee-onboard-section-title {
         font-size: 16px;
     }
 
-    .myaccount-form .form-control {
+    .employee-onboard-input {
         font-size: 0.9rem;
         padding: 8px;
     }
