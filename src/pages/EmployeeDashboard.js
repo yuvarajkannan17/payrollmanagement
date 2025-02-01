@@ -22,7 +22,7 @@ const EmployeeDashboard = () => {
               
               <li className="nav-item mb-3">
                 <Link
-                  to="/employee/myaccount"
+                  to="/employee/employeeonboard"
                   className="btn btn-dark w-100"
                   style={{ minWidth: "200px" }}
                 >

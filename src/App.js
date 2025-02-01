@@ -11,7 +11,7 @@ import HRDashboard from './pages/HRDashboard';
 import EmployeeSignUp from './pages/EmployeeSignUp';
 import MySalary from './pages/MySalary';
 import EmployeeDashboard from './pages/EmployeeDashboard';
-import MyAccount from './pages/MyAccount';
+import EmployeeOnboard from './pages/EmployeeOnboard';
 import EmployeeList from './pages/EmployeeList';
 import SalaryReport from './pages/SalaryReport';
 import NewSalaryEntry from './pages/NewSalaryEntry';
@@ -47,7 +47,7 @@ function App() {
         <Route path='/employee'>
          <Route path="login" element={<EmployeeLogin />} />
          <Route path="dashboard" element={<EmployeeDashboard />} />
-         <Route path='myaccount' element={<MyAccount />} /> 
+         <Route path='employeeonboard' element={<EmployeeOnboard />} /> 
          <Route path='mysalary' element={<MySalary />} />       
         </Route>
 

@@ -1,344 +1,481 @@
-// import React from 'react';
-// import { useFormik } from 'formik';
-// import * as Yup from 'yup';
-// import DatePicker from 'react-datepicker';
-// import "react-datepicker/dist/react-datepicker.css";
-// import '../styles/SalaryEntryForm.css';
-// import { useNavigate } from 'react-router-dom';
+// import React from "react";
+// import { Form, Button, Container, Row, Col } from "react-bootstrap";
+// import { useFormik } from "formik";
+// import * as Yup from "yup";
+// import '../styles/MyAccount.css';
 
-// // Validation schema using Yup
-// const validationSchema = Yup.object({
-//     name: Yup.string().required('Name is required'),
-//     month: Yup.string().required('Month is required'),
-//     totalWorkingDays: Yup.number().required('Total Working Days is required').positive().integer(),
-//     basic: Yup.number().required('Basic is required').positive(),
-//     houseRentAllowance: Yup.number().required('House Rent Allowance is required').positive(),
-//     specialAllowance: Yup.number().required('Special Allowance is required').positive(),
-//     otherAllowance: Yup.number().required('Other Allowance is required').positive(),
-//     providentFund: Yup.number().required('Provident Fund is required').positive(),
-//     professionalTax: Yup.number().required('Professional Tax is required').positive(),
-//     incomeTax: Yup.number().required('Income Tax is required').positive(),
-//     grossEarning: Yup.number().required('Gross Earning is required').positive(),
-//     totalAmount: Yup.number().required('Total Amount is required').positive(),
-// });
+// const MyAccount = () => {
+//   const handleBack = () => {
+//     window.history.back(); // Go to the previous page in the history
+//   };
+//   const validationSchema = Yup.object({
+//     // Personal Information validation
+//     fullName: Yup.string().required("Full Name is required"),
+//     dateOfBirth: Yup.date().required("Date of Birth is required"),
+//     gender: Yup.string().required("Gender is required"),
+//     nationality: Yup.string().required("Nationality is required"),
+//     maritalStatus: Yup.string().required("Marital Status is required"),
+//     contactNumber: Yup.string()
+//       .matches(/^[0-9]{10}$/, "Contact number must be 10 digits")
+//       .required("Contact Number is required"),
+//     email: Yup.string()
+//       .email("Invalid email address")
+//       .required("Email Address is required"),
+//     permanentAddress: Yup.string().required("Permanent Address is required"),
+//     currentAddress: Yup.string(),
 
-// const SalaryEntryForm = () => {
-//    const navigate= useNavigate();
-//     const formik = useFormik({
-//         initialValues: {
-//             name: '',
-//             month: '',
-//             totalWorkingDays: '',
-//             basic: '',
-//             houseRentAllowance: '',
-//             specialAllowance: '',
-//             otherAllowance: '',
-//             providentFund: '',
-//             professionalTax: '',
-//             incomeTax: '',
-//             grossEarning: '',
-//             totalAmount: '',
-//         },
-//         validationSchema: validationSchema,
-//         onSubmit: (values) => {
-//             console.log('Form Data:', values);
-//         },
-//     });
+//     // Educational Details validation
+//     highestQualification: Yup.string().required("Qualification is required"),
+//     institution: Yup.string().required("Institution/University is required"),
+//     graduationYear: Yup.number()
+//       .min(1900, "Enter a valid year")
+//       .max(new Date().getFullYear(), "Enter a valid year")
+//       .required("Year of Graduation is required"),
 
-//     const handleMonthChange = (date) => {
-//         if (date) {
-//             const formattedDate = date.toLocaleString('default', { month: 'long', year: 'numeric' }); 
-//             formik.setFieldValue('month', formattedDate); 
-//         } else {
-//             formik.setFieldValue('month', '');
-//         }
-//     };
-    
+//     // Employment Details validation
+//     previousEmployer: Yup.string().required("Previous Employer is required"),
+//     designation: Yup.string().required("Designation is required"),
+//     employmentDuration: Yup.string().required("Employment Duration is required"),
+
+//     // Identification Documents validation
+//     governmentId: Yup.string().required("Government ID is required"),
+
+//     // Point of Contact validation
+//     reference1: Yup.string().required("At least one reference is required"),
+
+//     // Consent and Declaration validation
+//     consent: Yup.boolean().oneOf([true], "You must consent to the terms").required("Consent is required"),
+//   });
+
+//   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+//     initialValues: {
+//       // Personal Information fields
+//       fullName: "",
+//       dateOfBirth: "",
+//       gender: "",
+//       nationality: "",
+//       maritalStatus: "",
+//       contactNumber: "",
+//       email: "",
+//       permanentAddress: "",
+//       currentAddress: "",
+
+//       // Educational Details fields
+//       highestQualification: "",
+//       institution: "",
+//       graduationYear: "",
+
+//       // Employment Details fields
+//       previousEmployer: "",
+//       designation: "",
+//       employmentDuration: "",
+
+//       // Identification Documents fields
+//       governmentId: "",
+
+//       // Point of Contact fields
+//       reference1: "",
+//       reference2: "",
+
+//       // Consent and Declaration fields
+//       consent: false,
+//     },
+//     validationSchema,
+//     onSubmit: (values) => {
+//       console.log("Form Submitted", values);
+//       alert("Form Submitted Successfully");
+//     },
+//   });
+
+//   return (
+//     <Container className="form-container">
+//       <Row className="justify-content-center">
+//         <Col md={8} lg={6} xs={12}>
+//           <h2 className="form-title">Employee Onboarding Form</h2>
+//           <Form noValidate onSubmit={handleSubmit}>
+//             {/* Personal Information */}
+//             <h4>1. Personal Information</h4>
+//             <Form.Group controlId="fullName">
+//               <Form.Label>Full Name<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="fullName"
+//                 value={values.fullName}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter your full name"
+//                 isInvalid={touched.fullName && errors.fullName}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.fullName}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="dateOfBirth">
+//               <Form.Label>Date of Birth<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="date"
+//                 name="dateOfBirth"
+//                 value={values.dateOfBirth}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 isInvalid={touched.dateOfBirth && errors.dateOfBirth}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.dateOfBirth}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="gender">
+//               <Form.Label>Gender<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 as="select"
+//                 name="gender"
+//                 value={values.gender}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 isInvalid={touched.gender && errors.gender}
+//               >
+//                 <option value="">Select Gender</option>
+//                 <option value="Male">Male</option>
+//                 <option value="Female">Female</option>
+//                 <option value="Other">Other</option>
+//               </Form.Control>
+//               <Form.Control.Feedback type="invalid">{errors.gender}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="nationality">
+//               <Form.Label>Nationality<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="nationality"
+//                 value={values.nationality}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter your nationality"
+//                 isInvalid={touched.nationality && errors.nationality}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.nationality}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="maritalStatus">
+//               <Form.Label>Marital Status<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 as="select"
+//                 name="maritalStatus"
+//                 value={values.maritalStatus}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 isInvalid={touched.maritalStatus && errors.maritalStatus}
+//               >
+//                 <option value="">Select Marital Status</option>
+//                 <option value="Single">Single</option>
+//                 <option value="Married">Married</option>
+//                 <option value="Divorced">Divorced</option>
+//                 <option value="Widowed">Widowed</option>
+//               </Form.Control>
+//               <Form.Control.Feedback type="invalid">{errors.maritalStatus}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="contactNumber">
+//               <Form.Label>Contact Number<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="tel"
+//                 name="contactNumber"
+//                 value={values.contactNumber}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter your contact number"
+//                 isInvalid={touched.contactNumber && errors.contactNumber}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.contactNumber}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="email">
+//               <Form.Label>Email Address<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="email"
+//                 name="email"
+//                 value={values.email}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter your email address"
+//                 isInvalid={touched.email && errors.email}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="permanentAddress">
+//               <Form.Label>Permanent Address<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="permanentAddress"
+//                 value={values.permanentAddress}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter your permanent address"
+//                 isInvalid={touched.permanentAddress && errors.permanentAddress}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.permanentAddress}</Form.Control.Feedback>
+//             </Form.Group>
+
+//             <Form.Group controlId="currentAddress">
+//               <Form.Label>Current Address<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="currentAddress"
+//                 value={values.currentAddress}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter your current address"
+//               />
+//             </Form.Group>
+
+//             {/* Educational Details */}
+//             <h4>2. Educational Details</h4>
+//             <Form.Group controlId="highestQualification">
+//           <Form.Label>Highest Qualification<span style={{ color: "red" }}>*</span></Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="highestQualification"
+//             value={values.highestQualification}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Degree/Diploma"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="institution">
+//           <Form.Label>Institution/University<span style={{ color: "red" }}>*</span></Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="institution"
+//             value={values.institution}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Institution/University"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="graduationYear">
+//           <Form.Label>Year of Graduation<span style={{ color: "red" }}>*</span></Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="graduationYear"
+//             value={values.graduationYear}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Year of Graduation"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="certificates">
+//           <Form.Label>Upload Certificates/Mark Sheets</Form.Label>
+//           <Form.Control
+//             type="file"
+//             name="certificates"
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//           />
+//         </Form.Group>
 
 
-//     return (
-//         <div className="salary-entry-form-wrapper">
+//             {/* Employment Details */}
+//             <h4>3. Employment Details</h4>
+//             <Form.Group controlId="previousEmployers">
+//           <Form.Label>Previous Employers</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="previousEmployers"
+//             value={values.previousEmployers}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Previous Employers"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="designation">
+//           <Form.Label>Designation</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="designation"
+//             value={values.designation}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Designation"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="employmentDuration">
+//           <Form.Label>Employment Duration</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="employmentDuration"
+//             value={values.employmentDuration}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Start and End Dates"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="reportingManager">
+//           <Form.Label>Reporting Manager/HR Contact</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="reportingManager"
+//             value={values.reportingManager}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Name and Contact Details"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="reasonForLeaving">
+//           <Form.Label>Reason for Leaving</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="reasonForLeaving"
+//             value={values.reasonForLeaving}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Reason for Leaving"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="payslips">
+//           <Form.Label>Upload Payslips</Form.Label>
+//           <Form.Control
+//             type="file"
+//             name="payslips"
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="relievingLetters">
+//           <Form.Label>Upload Relieving Letters/Experience Certificates</Form.Label>
+//           <Form.Control
+//             type="file"
+//             name="relievingLetters"
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//           />
+//         </Form.Group>
+
+
             
-//             <div className="salary-entry-form-container">
-//                 <h2 className="salary-entry-form-title">Salary Entry Form</h2>
+//             {/* Identification Documents */}
+//         <h4>4. Identification Documents</h4>
+//         <Form.Group controlId="aadhaar">
+//           <Form.Label>Aadhaar Number<span style={{ color: "red" }}>*</span></Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="aadhaar"
+//             value={values.aadhaar}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Aadhaar Number"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="pan">
+//           <Form.Label>PAN<span style={{ color: "red" }}>*</span></Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="pan"
+//             value={values.pan}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="PAN"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="passport">
+//           <Form.Label>Passport Number</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="passport"
+//             value={values.passport}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Passport Number"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="voterId">
+//           <Form.Label>Voter ID</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="voterId"
+//             value={values.voterId}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Voter ID"
+//           />
+//         </Form.Group>
+//         <Form.Group controlId="drivingLicense">
+//           <Form.Label>Driving License (optional)</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="drivingLicense"
+//             value={values.drivingLicense}
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//             placeholder="Driving License"
+//           />
+//         </Form.Group>
+            
+//         <Form.Group controlId="idDocuments">
+//           <Form.Label>Upload Copies of Identification Documents</Form.Label>
+//           <Form.Control
+//             type="file"
+//             name="idDocuments"
+//             onBlur={handleBlur}
+//             onChange={handleChange}
+//           />
+//         </Form.Group>
 
-//                 <form onSubmit={formik.handleSubmit}>
-//                     {/* Name and Month Fields */}
-//                     <div className="salary-entry-form-row">
-//                         <div className="salary-entry-form-group">
-//                             <label>Name</label>
-//                             <input
-//                                 type="text"
-//                                 name="name"
-//                                 placeholder='Name'
-//                                 value={formik.values.name}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.name && formik.errors.name && <div className="salary-entry-error">{formik.errors.name}</div>}
-//                         </div>
 
-//                         <div className="salary-entry-form-group">
-//                             <label>Month</label>
-//                             <DatePicker
-//                                 selected={formik.values.month ? new Date(`${formik.values.month} 1`) : null}
-//                                 onChange={handleMonthChange}
-//                                 dateFormat="MM/yyyy"
-//                                 showMonthYearPicker
-//                                 placeholderText="Select Month and Year"
-//                                 name="month"
-                                
-//                             />
+//             {/* Point of Contact */}
+//             <h4>5. Point of Contact</h4>
+//             <Form.Group controlId="reference1">
+//               <Form.Label>Reference 1<span style={{ color: "red" }}>*</span></Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="reference1"
+//                 value={values.reference1}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter Reference 1 details"
+//                 isInvalid={touched.reference1 && errors.reference1}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.reference1}</Form.Control.Feedback>
+//             </Form.Group>
 
+//             <Form.Group controlId="reference2">
+//               <Form.Label>Reference 2</Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 name="reference2"
+//                 value={values.reference2}
+//                 onBlur={handleBlur}
+//                 onChange={handleChange}
+//                 placeholder="Enter Reference 2 details (optional)"
+//               />
+//             </Form.Group>
+            
 
-//                             {formik.touched.month && formik.errors.month && <div className="salary-entry-error">{formik.errors.month}</div>}
-//                         </div>
-//                     </div>
+//             {/* Consent and Declaration */}
+//             <h4>6. Consent and Declaration</h4>
+//             <Form.Group controlId="consent">
+//               <Form.Check
+//                 type="checkbox"
+//                 label="I consent to verify the details provided and acknowledge that false information can result in termination."
+//                 name="consent"
+//                 checked={values.consent}
+//                 onChange={handleChange}
+//                 isInvalid={touched.consent && errors.consent}
+//               />
+//               <Form.Control.Feedback type="invalid">{errors.consent}</Form.Control.Feedback>
+//             </Form.Group>
+            
 
-//                     {/* Total Working Days and Basic Fields */}
-//                     <div className="salary-entry-form-row">
-//                         <div className="salary-entry-form-group">
-//                             <label>Total Working Days</label>
-//                             <input
-//                                 type="number"
-//                                 name="totalWorkingDays"
-//                                 placeholder='Total Working Days'
-//                                 value={formik.values.totalWorkingDays}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.totalWorkingDays && formik.errors.totalWorkingDays && <div className="salary-entry-error">{formik.errors.totalWorkingDays}</div>}
-//                         </div>
-
-//                         <div className="salary-entry-form-group">
-//                             <label>Basic</label>
-//                             <input
-//                                 type="text"
-//                                 placeholder='Basic'
-//                                 name="basic"
-//                                 value={formik.values.basic}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.basic && formik.errors.basic && <div className="salary-entry-error">{formik.errors.basic}</div>}
-//                         </div>
-//                     </div>
-
-//                     {/* Other Allowances */}
-//                     <div className="salary-entry-form-row">
-//                         <div className="salary-entry-form-group">
-//                             <label>House Rent Allowance</label>
-//                             <input
-//                                 type="text"
-//                                 placeholder='House Rent Allowance'
-//                                 name="houseRentAllowance"
-//                                 value={formik.values.houseRentAllowance}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.houseRentAllowance && formik.errors.houseRentAllowance && <div className="salary-entry-error">{formik.errors.houseRentAllowance}</div>}
-//                         </div>
-
-//                         <div className="salary-entry-form-group">
-//                             <label>Special Allowance</label>
-//                             <input
-//                                 type="text"
-//                                 name="specialAllowance"
-//                                 placeholder='Special Allowance'
-//                                 value={formik.values.specialAllowance}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.specialAllowance && formik.errors.specialAllowance && <div className="salary-entry-error">{formik.errors.specialAllowance}</div>}
-//                         </div>
-//                     </div>
-
-//                     {/* Other Fields */}
-//                     <div className="salary-entry-form-row">
-//                         <div className="salary-entry-form-group">
-//                             <label>Other Allowance</label>
-//                             <input
-//                                 type="text"
-//                                 name="otherAllowance"
-//                                 placeholder='Other Allowance'
-//                                 value={formik.values.otherAllowance}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.otherAllowance && formik.errors.otherAllowance && <div className="salary-entry-error">{formik.errors.otherAllowance}</div>}
-//                         </div>
-
-//                         <div className="salary-entry-form-group">
-//                             <label>Provident Fund</label>
-//                             <input
-//                                 type="text"
-//                                 name="providentFund"
-//                                 placeholder='Provident Fund'
-//                                 value={formik.values.providentFund}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.providentFund && formik.errors.providentFund && <div className="salary-entry-error">{formik.errors.providentFund}</div>}
-//                         </div>
-//                     </div>
-
-//                     {/* Professional Tax and Income Tax Fields */}
-//                     <div className="salary-entry-form-row">
-//                         <div className="salary-entry-form-group">
-//                             <label>Professional Tax</label>
-//                             <input
-//                                 type="text"
-//                                 name="professionalTax"
-//                                 placeholder='Professional Tax'
-//                                 value={formik.values.professionalTax}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.professionalTax && formik.errors.professionalTax && <div className="salary-entry-error">{formik.errors.professionalTax}</div>}
-//                         </div>
-
-//                         <div className="salary-entry-form-group">
-//                             <label>Income Tax</label>
-//                             <input
-//                                 type="text"
-//                                 name="incomeTax"
-//                                 placeholder='Income Tax'
-//                                 value={formik.values.incomeTax}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.incomeTax && formik.errors.incomeTax && <div className="salary-entry-error">{formik.errors.incomeTax}</div>}
-//                         </div>
-//                     </div>
-
-//                     {/* Gross Earning and Total Amount Fields */}
-//                     <div className="salary-entry-form-row">
-//                         <div className="salary-entry-form-group">
-//                             <label>Gross Earning</label>
-//                             <input
-//                                 type="text"
-//                                 name="grossEarning"
-//                                 placeholder='Gross Earning'
-//                                 value={formik.values.grossEarning}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.grossEarning && formik.errors.grossEarning && <div className="salary-entry-error">{formik.errors.grossEarning}</div>}
-//                         </div>
-
-//                         <div className="salary-entry-form-group">
-//                             <label>Total Amount</label>
-//                             <input
-//                                 type="text"
-//                                 name="totalAmount"
-//                                 placeholder='Total Amount'
-//                                 value={formik.values.totalAmount}
-//                                 onChange={formik.handleChange}
-//                                 onBlur={formik.handleBlur}
-//                             />
-//                             {formik.touched.totalAmount && formik.errors.totalAmount && <div className="salary-entry-error">{formik.errors.totalAmount}</div>}
-//                         </div>
-//                     </div>
-
-//                     <button type="submit" className="salary-entry-submit-btn">Submit</button>
-//                 </form>
-//             </div>
-//         </div>
-//     );
+//             {/* Submit Button */}
+//             <Button variant="primary" type="submit" className="submit-btn">
+//               Submit
+//             </Button>
+//             <button className="btn btn-secondary back-btn" onClick={handleBack}>
+//           Back
+//         </button>
+//           </Form>
+//         </Col>
+//       </Row>
+//     </Container>
+//   );
 // };
 
-// export default SalaryEntryForm;
-
-// .salary-entry-form-wrapper {
-//     background-color: rgb(245, 255, 215); /* Sandal color */
-//     min-height: 100vh;
-//     display: flex;
-//     justify-content: center;
-//     align-items: flex-start;
-//     padding: 20px;
-// }
-
-// .salary-entry-form-container {
-//     background-color: white;
-//     padding: 20px;
-//     border-radius: 10px;
-//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-//     width: 100%;
-//     max-width: 600px; /* Adjusted width for smaller form */
-// }
-
-// .salary-entry-form-title {
-//     text-align: center;
-//     font-size: 22px;
-//     margin-bottom: 20px;
-// }
-
-// .salary-entry-form-row {
-//     display: flex;
-//     justify-content: space-between;
-//     gap: 15px;
-//     margin-bottom: 20px;
-// }
-
-// .salary-entry-form-group {
-//     width: 48%; /* Each input will take up 48% width for two fields per row */
-// }
-
-// .salary-entry-form-group label {
-//     font-weight: bold;
-//     display: block;
-//     margin-bottom: 5px;
-// }
-
-// .salary-entry-form-group input {
-//     width: 100%;
-//     padding: 8px;
-//     border: 1px solid #ccc;
-//     border-radius: 5px;
-// }
-
-// .salary-entry-submit-btn {
-//     background-color: #007bff;
-//     color: white;
-//     padding: 10px 20px;
-//     border: none;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     width: 100%;
-//     margin-top: 20px;
-// }
-
-// .salary-entry-submit-btn:hover {
-//     background-color: #0056b3;
-// }
-
-// .salary-entry-error {
-//     color: red;
-//     font-size: 12px;
-// }
-
-
-
-// /* Responsiveness: Adjust fields on smaller screens */
-// @media (max-width: 768px) {
-//     .salary-entry-form-container {
-//         padding: 15px;
-//     }
-
-//     .salary-entry-form-title {
-//         font-size: 18px;
-//     }
-
-//     .salary-entry-form-row {
-//         flex-direction: column;
-//     }
-
-//     .salary-entry-form-group {
-//         width: 100%; /* Stack fields vertically */
-//         margin-bottom: 10px;
-//     }
-
-//     .salary-entry-submit-btn {
-//         width: 100%;
-//     }
-// }
+// export default MyAccount;
