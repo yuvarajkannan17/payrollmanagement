@@ -6,6 +6,7 @@
     "@fontsource/poppins": "^5.1.1",
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",
+    "date-fns": "^4.1.0",
     "formik": "^2.4.6",
     "jspdf": "^2.5.2",
     "react": "^19.0.0",

@@ -3,7 +3,9 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import '../styles/EmployeeOnboard.css';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { format, parse } from "date-fns";
 const EmployeeOnboard = () => {
   const handleBack = () => {
     window.history.back(); // Go to the previous page in the history
@@ -12,8 +14,10 @@ const EmployeeOnboard = () => {
   // Validation Schema
   const validationSchema = Yup.object({
     // Personal Information
-    fullName: Yup.string().required("Full Name is required"),
-    dateOfBirth: Yup.date().required("Date of Birth is required"),
+    fullName: Yup.string().matches(/^[a-zA-Z\s]{3,}$/, 'Name must be at least 3 characters long and contain only letters and spaces.').required("Full Name is required"),
+    dateOfBirth: Yup.date()
+      .nullable()
+      .required("Date of Birth is required"),
     gender: Yup.string().required("Gender is required"),
     nationality: Yup.string().required("Nationality is required"),
     maritalStatus: Yup.string().required("Marital Status is required"),
@@ -23,21 +27,18 @@ const EmployeeOnboard = () => {
     email: Yup.string()
       .email("Invalid email address")
       .required("Email Address is required"),
-    permanentAddress: Yup.string().required("Permanent Address is required"),
-    currentAddress: Yup.string(),
+    permanentAddress: Yup.string().matches(/^[\w\s.,#-]{5,}$/, "Minimum of 5 Characters").required("Permanent Address is required"),
+    currentAddress: Yup.string().matches(/^[\w\s.,#-]{5,}$/, "Minimum of 5 Characters"),
 
     // Educational Details
     highestQualification: Yup.string().required("Qualification is required"),
     institution: Yup.string().required("Institution/University is required"),
-    graduationYear: Yup.number()
-      .min(1900, "Enter a valid year")
-      .max(new Date().getFullYear(), "Enter a valid year")
-      .required("Year of Graduation is required"),
+    graduationYear: Yup.string().matches(/^\d{4}$/, "Enter valid 4-digit year").required("Year of Graduation is required"),
     certificates: Yup.mixed().required("Certificates are required"),
 
     // Employment Details
-    previousEmployer: Yup.string().required("Previous Employer is required"),
-    designation: Yup.string().required("Designation is required"),
+    previousEmployer: Yup.string().matches(/^[A-Za-z0-9\s.&-]{2,50}$/, "Employer name must be at least 2 characters long.").required("Previous Employer is required"),
+    designation: Yup.string().matches(/^[A-Za-z\s.&-]{2,50}$/, "Enter valid designation").required("Designation is required"),
     employmentDuration: Yup.string().required("Employment Duration is required"),
     reportingManager: Yup.string(),
     reasonForLeaving: Yup.string().required("Reason for Leaving is required"),
@@ -76,7 +77,7 @@ const EmployeeOnboard = () => {
     initialValues: {
       // Personal Information
       fullName: "",
-      dateOfBirth: "",
+      dateOfBirth: null,
       gender: "",
       nationality: "",
       maritalStatus: "",
@@ -132,6 +133,12 @@ const EmployeeOnboard = () => {
       alert("Form Submitted Successfully");
     },
   });
+  console.log(errors)
+
+  // Convert selected date to DD/MM/YYYY format
+  const handleDateChange = (date) => {
+    setFieldValue("dateOfBirth", date ? format(date, "dd/MM/yyyy") : "");
+  };
 
   return (
     <Container fluid className="employee-onboard-container">
@@ -163,15 +170,15 @@ const EmployeeOnboard = () => {
               <Col lg={6} md={12} xs={12}>
                 <Form.Group controlId="dateOfBirth" className="employee-onboard-form-group">
                   <Form.Label>Date of Birth<span className="employee-onboard-required">*</span></Form.Label>
-                  <Form.Control
-                    type="date"
-                    name="dateOfBirth"
-                    value={values.dateOfBirth}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    isInvalid={touched.dateOfBirth && errors.dateOfBirth}
-                    className="employee-onboard-input"
-                  />
+                  <div>
+                    <DatePicker
+                      selected={values.dateOfBirth ? parse(values.dateOfBirth, "dd/MM/yyyy", new Date()) : null}
+                      onChange={handleDateChange}
+                      dateFormat="dd/MM/yyyy" // Display format
+                      placeholderText="DD/MM/YYYY"
+                      className="form-control employee-onboard-input"
+                    />
+                  </div>
                   <Form.Control.Feedback type="invalid" className="employee-onboard-error">
                     {errors.dateOfBirth}
                   </Form.Control.Feedback>
@@ -368,7 +375,7 @@ const EmployeeOnboard = () => {
                 <Form.Group controlId="graduationYear" className="employee-onboard-form-group">
                   <Form.Label>Year of Graduation<span className="employee-onboard-required">*</span></Form.Label>
                   <Form.Control
-                    type="number"
+                    type="text"
                     name="graduationYear"
                     value={values.graduationYear}
                     onBlur={handleBlur}
@@ -443,14 +450,32 @@ const EmployeeOnboard = () => {
             <Row>
               <Col lg={6} md={12} xs={12}>
                 <Form.Group controlId="employmentDuration" className="employee-onboard-form-group">
-                  <Form.Label>Employment Duration<span className="employee-onboard-required">*</span></Form.Label>
+                  <Form.Label>Employment Duration (Start Date)<span className="employee-onboard-required">*</span></Form.Label>
                   <Form.Control
                     type="text"
                     name="employmentDuration"
                     value={values.employmentDuration}
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Start and End Dates"
+                    placeholder="Start Date"
+                    isInvalid={touched.employmentDuration && errors.employmentDuration}
+                    className="employee-onboard-input"
+                  />
+                  <Form.Control.Feedback type="invalid" className="employee-onboard-error">
+                    {errors.employmentDuration}
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Col>
+              <Col lg={6} md={12} xs={12}>
+                <Form.Group controlId="employmentDuration" className="employee-onboard-form-group">
+                  <Form.Label>Employment Duration (End Date)<span className="employee-onboard-required">*</span></Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="employmentDuration"
+                    value={values.employmentDuration}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    placeholder="End Date"
                     isInvalid={touched.employmentDuration && errors.employmentDuration}
                     className="employee-onboard-input"
                   />
@@ -461,14 +486,28 @@ const EmployeeOnboard = () => {
               </Col>
               <Col lg={6} md={12} xs={12}>
                 <Form.Group controlId="reportingManager" className="employee-onboard-form-group">
-                  <Form.Label>Reporting Manager/HR Contact</Form.Label>
+                  <Form.Label>Reporting Manager (Name)</Form.Label>
                   <Form.Control
                     type="text"
                     name="reportingManager"
                     value={values.reportingManager}
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Name and Contact Details"
+                    placeholder="Name "
+                    className="employee-onboard-input"
+                  />
+                </Form.Group>
+              </Col>
+              <Col lg={6} md={12} xs={12}>
+                <Form.Group controlId="reportingManager" className="employee-onboard-form-group">
+                  <Form.Label>Reporting Manager Contact</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="reportingManager"
+                    value={values.reportingManager}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    placeholder=" Contact Details"
                     className="employee-onboard-input"
                   />
                 </Form.Group>

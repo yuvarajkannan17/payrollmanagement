@@ -26,7 +26,7 @@ const EmployeeDashboard = () => {
                   className="btn btn-dark w-100"
                   style={{ minWidth: "200px" }}
                 >
-                  My Account 
+                  Employee Onboard 
                 </Link>
               </li>
               <li className="nav-item mb-3">
